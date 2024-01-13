@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // Context
 import { UserContext } from '../../context/UserContext';
 import { ToggleContext } from '../../context/ToggleContext';
 // Images
-import LogoImage from '../../assets/images/logos/wdbt-black.svg';
+import MyeaLogo from '../../assets/images/svg/myea-logo.svg';
 
 function Navbar() {
   const { user, setUser } = useContext(UserContext);
@@ -24,14 +24,10 @@ function Navbar() {
   };
 
   return (
-    <nav className='h-full relative z-30 grid grid-cols-reg bg-yellow-400 py-2 border-b-2 border-solid border-black'>
+    <nav className='h-full relative z-30 grid grid-cols-reg bg-colour-dark py-2 border-b-2 border-solid border-black'>
       <section className='grid items-center justify-center pl-4'>
         <Link className='no__highlights' to='/'>
-          <img
-            className='w-10 no__highlights h-10'
-            src={LogoImage}
-            alt='Logo'
-          />
+          <img className='w-10 no__highlights h-10' src={MyeaLogo} alt='Logo' />
         </Link>
       </section>
 
@@ -64,25 +60,49 @@ function Navbar() {
       {/* Navigation */}
       <section className='hidden lg:grid justify-end'>
         <div className='grid items-center pr-4'>
-          <ul className='grid grid-flow-col w-fit justify-end gap-4 font-semibold'>
-            <li className={activeNav === '/' ? 'text-gray-600 hover:text-gray-700 active:scale-95' : 'hover:text-gray-700 active:scale-95'}>
+          <ul className='grid grid-flow-col w-fit justify-end gap-4 font-semibold text-white'>
+            <li
+              className={
+                activeNav === '/'
+                  ? 'text-gray-200 hover:text-gray-700 active:scale-95'
+                  : 'hover:text-gray-700 active:scale-95'
+              }
+            >
               <Link className='w-full' to='/'>
                 Home
               </Link>
             </li>
-            <li className={activeNav === '/design' ? 'text-gray-600 hover:text-gray-700 active:scale-95' : 'hover:text-gray-700 active:scale-95'}>
-              <Link className='w-full' to='/design'>
-                Design
+            <li
+              className={
+                activeNav === '/main-shop'
+                  ? 'text-gray-200 hover:text-gray-700 active:scale-95'
+                  : 'hover:text-gray-700 active:scale-95'
+              }
+            >
+              <Link className='w-full' to='/main-shop'>
+                Shop
               </Link>
             </li>
             {!user.email && (
               <>
-                <li className={activeNav === '/login' ? 'text-gray-600 hover:text-gray-700 active:scale-95' : 'hover:text-gray-700 active:scale-95'}>
+                <li
+                  className={
+                    activeNav === '/login'
+                      ? 'text-gray-200 hover:text-gray-700 active:scale-95'
+                      : 'hover:text-gray-700 active:scale-95'
+                  }
+                >
                   <Link className='w-full' to='/Login'>
                     Login
                   </Link>
                 </li>
-                <li className={activeNav === '/sign-up' ? 'text-gray-600 hover:text-gray-700 active:scale-95' : 'hover:text-gray-700 active:scale-95'}>
+                <li
+                  className={
+                    activeNav === '/sign-up'
+                      ? 'text-gray-200 hover:text-gray-700 active:scale-95'
+                      : 'hover:text-gray-700 active:scale-95'
+                  }
+                >
                   <Link className='w-full' to='/sign-up'>
                     Sign Up
                   </Link>
@@ -90,7 +110,13 @@ function Navbar() {
               </>
             )}
             {(user.role === 'ADMIN' || user.role === 'DEVELOPER') && (
-              <li className={activeNav === '/admin' ? 'text-gray-600 hover:text-gray-700 active:scale-95' : 'hover:text-gray-700 active:scale-95'}>
+              <li
+                className={
+                  activeNav === '/admin'
+                    ? 'text-gray-200 hover:text-gray-700 active:scale-95'
+                    : 'hover:text-gray-700 active:scale-95'
+                }
+              >
                 <Link className='w-full' to='/admin'>
                   Admin
                 </Link>
@@ -122,13 +148,13 @@ function Navbar() {
               </li>
               <li
                 className={
-                  activeNav === '/design'
+                  activeNav === '/main-shop'
                     ? 'w-full no__highlights nav__bg hover:bg-green-500 active:scale-95 grid py-2 outline-2 outline outline-black bg-yellow-700 text-gray-800 font-semibold'
                     : 'w-full no__highlights nav__bg hover:bg-blue-500 active:scale-95 grid py-2 outline-2 outline outline-black bg-yellow-500 text-gray-800 font-semibold'
                 }
               >
-                <Link className='w-full' to='/design'>
-                  Design
+                <Link className='w-full' to='/main-shop'>
+                  Shop
                 </Link>
               </li>
 
